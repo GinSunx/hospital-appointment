@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wcteam.dao.SourceDao">
+    <insert id="addSource" parameterType="cn.wcteam.entity.Source">
+        insert into t_numsource(numSourceNo,hospId,departId,doctorId,workDate,workTime,initQuantity,restQuantity,fee)
+        values (#{numSourceNo},#{hospId},#{departId},#{doctorId},#{workDate},#{workTime},#{initQuantity},#{restQuantity},#{fee})
+    </insert>
+
+    <update id="updateSource" parameterType="cn.wcteam.entity.Source">
+            update t_numsource set hospId=#{hospId},departId=#{departId},doctorId=#{doctorId},workDate=#{workDate},workTime=#{workTime},initQuantity=#{initQuantity},restQuantity=#{restQuantity},fee=#{fee}
+            where numSourceNo=#{numSourceNo}
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        delete from t_numsource where numSourceNo=#{id}
+    </delete>
+
+    <select id="findAll" resultType="cn.wcteam.entity.Source">
+        select * from t_numsource
+    </select>
+
+    <select id="findBySourceAndDocId" resultType="int" parameterType="int">
+        select COUNT(*) from t_numsource where numSourceNo=#{sourceId} and doctorId=#{doctorId};
+    </select>
+
+    <select id="findByDocId" resultType="cn.wcteam.entity.Source" parameterType="int">
+        select * from t_numsource where doctorId = #{doctorId}
+    </select>
+
+    <update id="decrease1" parameterType="int">
+        update t_numsource set restQuantity = restQuantity-1 where numSourceNo = #{SourceId}
+    </update>
+</mapper>

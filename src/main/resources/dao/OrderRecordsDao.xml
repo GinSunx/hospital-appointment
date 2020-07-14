@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wcteam.dao.OrderRecordsDao">
+	<select id="findOrderById" resultType="cn.wcteam.entity.OrderRecords"
+		parameterType="int">
+		SELECT * FROM `t_records`
+		WHERE id = #{id}
+	</select>
+
+	<insert id="insertOrderRecords">
+		INSERT INTO t_records
+		(userId,numSourceNo,hospName,departName,doctorName,appointmentDate,appointmentTime)
+		VALUE
+		(#{userId},#{numSourceNo},#{hospName},#{departName},#{doctorName},#{appointmentDate},#{appointmentTime})
+	</insert>
+
+	<select id="findOrderRecordsByUserId" resultType="cn.wcteam.entity.OrderRecords"
+		parameterType="int">
+		SELECT * FROM `t_records`
+		WHERE userId = #{userId}
+		order BY createTime DESC
+	</select>
+
+	<select id="findLastId" resultType="int">
+		select last_insert_id()
+	</select>
+
+	<update id="updateOrderDiseaseInfo">
+		UPDATE t_records SET
+		diseaseInfo=#{diseaseInfo}
+		WHERE id = #{id}
+	</update>
+
+	<update id="updateOrderSta1">
+		UPDATE t_records SET
+		state=1
+		WHERE id = #{id}
+	</update>
+
+	<update id="cancelOrder1">
+		UPDATE t_records SET
+		isCancel=1
+		WHERE id = #{id}
+	</update>
+	
+	<update id="cancelOrder2">
+		UPDATE t_records SET
+		isCancel=2
+		WHERE id = #{id}
+	</update>
+
+	<delete id="deleterOrderById" parameterType="int">
+		delete from t_records where id = #{id}
+	</delete>
+</mapper>

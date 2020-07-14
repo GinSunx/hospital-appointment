@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wcteam.dao.DepartDao">
+	<select id="findDepartByHospName" resultType="cn.wcteam.entity.Depart"
+		parameterType="java.lang.String">
+		SELECT
+		* FROM `t_department`
+		WHERE hospName =
+		#{hospName}
+	</select>
+
+	<select id="findDepartById" resultType="cn.wcteam.entity.Depart"
+		parameterType="int">
+		SELECT
+		* FROM `t_department`
+		WHERE departId =
+		#{id}
+	</select>
+
+	<select id="findDepartNum" parameterType="cn.wcteam.entity.Depart" resultType="int">
+		select count(*) from `t_department`
+	</select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wcteam.dao.DoctorDao">
+	<select id="findByHosAndDepartName" resultType="cn.wcteam.entity.Doctor"
+		parameterType="cn.wcteam.entity.Doctor">
+		SELECT
+		* FROM `t_doctor`
+		WHERE  hospName= #{hospName}
+		AND departName = #{departName}
+	</select>
+
+	<select id="findDoctorById" resultType="cn.wcteam.entity.Doctor"
+			parameterType="int">
+		SELECT
+		* FROM `t_doctor`
+		WHERE doctorId =
+		#{id}
+	</select>
+
+	<select id="findDoctorNum" resultType="int">
+		SELECT COUNT(*) FROM `t_doctor`
+	</select>
+
+	<select id="findDoctorTitle" resultType="java.lang.String" parameterType="int">
+		select doctorTitle from `t_doctor` where doctorId = #{doctorId}
+	</select>
+
+	<select id="findDoctorDegree" resultType="java.lang.String" parameterType="int">
+		select doctorDegree from `t_doctor` where doctorId = #{doctorId}
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+.SourceNumberContent .hd {
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-left: 50px;
+}
+
+.SourceNumberContent .hd span {
+    float: left;
+    /*margin-left: -13px;*/
+    color: #EB6864;
+    cursor: pointer;
+}
+
+.SourceNumberContent .hd span:hover {
+    text-decoration: none;
+    color: #799BE0;
+}
+
+.SourceNumberContent table {
+    margin: 10px 50px;
+}
+
+
+.SourceNumberContent table span {
+    color: #EB6864;
+    cursor: pointer;
+}
+
+.SourceNumberContent table span:hover {
+    color: #799BE0;
+}
+
+.SourceNumberContent table em {
+    font-style: normal;
+    color: #EB6864;
+    cursor: pointer;
+}
+
+.SourceNumberContent table em:hover {
+    color: #799BE0;
+}

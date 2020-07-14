@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.wcteam.dao.CommonUserDao">
+	<insert id="insertCommonUser">
+		INSERT INTO t_user
+		(userEmail,userPsw,regTime)
+		VALUE
+		(#{userEmail},#{userPsw},#{regTime})
+	</insert>
+
+	<update id="addUserInfo" parameterType="java.lang.String">
+		update `t_user` set userTel=#{userTel},userIdent=#{userIdent},userName=#{userName},userSex=#{userSex}
+		where userEmail=#{userEmail}
+	</update>
+
+	<select id="findCommonUserByUserId" resultType="cn.wcteam.entity.CommonUser"
+		parameterType="int">
+		SELECT * FROM t_user WHERE userId = #{userId}
+	</select>
+
+	<select id="findCommonUserByEmail" resultType="cn.wcteam.entity.CommonUser"
+			parameterType="java.lang.String">
+		SELECT * FROM t_user WHERE userEmail = #{userEmail}
+	</select>
+
+	<select id="findCommonUserByUserIdent" resultType="cn.wcteam.entity.CommonUser"
+			parameterType="java.lang.String">
+		SELECT * FROM t_user WHERE userIdent = #{userIdent}
+	</select>
+
+	<select id="findCommonUserByUserName" resultType="cn.wcteam.entity.CommonUser"
+			parameterType="java.lang.String">
+		SELECT * FROM t_user WHERE userName= #{userName}
+	</select>
+
+	<select id="findCommonUserByTel" resultType="cn.wcteam.entity.CommonUser"
+						 parameterType="java.lang.String">
+		SELECT * FROM t_user WHERE userTel =#{userTel}
+	</select>
+
+	<update id="modifyPhone">
+		UPDATE t_user SET
+		userTel=#{newPhone}
+		WHERE
+		userEmail=#{userEmail}
+	</update>
+
+	<update id="modifyPsw">
+		UPDATE t_user SET
+		userPsw=#{newPsw}
+		WHERE
+		userEmail=#{userEmail}
+	</update>
+
+	<update id="modifySex">
+		UPDATE t_user SET
+		userSex=#{userSex}
+		WHERE
+		userId=#{userId}
+	</update>
+</mapper>
